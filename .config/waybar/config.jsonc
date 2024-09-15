@@ -1,0 +1,86 @@
+// -*- mode: jsonc -*-
+{
+    "reload_style_on_change": true,
+    "layer": "bottom",
+    "position": "top",
+    "spacing": "0px",
+    "modules-left": [
+        "hyprland/workspaces",
+        "hyprland/window"
+    ],
+    "modules-center": [
+        "clock"
+    ],
+    "modules-right": [
+        "pulseaudio",
+        "network",
+        "backlight",
+        "hyprland/language",
+        "battery",
+        "tray"
+    ],
+    "hyprland/workspaces": {
+        "format": "{icon}",
+        "format-icons": {
+            "active": "",
+            "default": ""
+        }
+    },
+    "hyprland/window": {
+        "icon": true,
+        "icon-size": 20
+    },
+    "pulseaudio": {
+        "format": "{volume}% <span font-family='Font Awesome 6 Free'>{icon}</span> {format_source}",
+        "format-bluetooth": "{volume}% <span font-family='Font Awesome 6 Free'>{icon}</span> {format_source}",
+        "format-bluetooth-muted": " <span font-family='Font Awesome 6 Free'>{icon}</span> {format_source}",
+        "format-muted": "<span font-family='Font Awesome 6 Free'></span> {format_source}",
+        "format-source": "{volume}% <span font-family='Font Awesome 6 Free'></span>",
+        "format-source-muted": "<span font-family='Font Awesome 6 Free'></span>",
+        "format-icons": {
+            "headphone": "",
+            "hands-free": "",
+            "headset": "",
+            "phone": "",
+            "portable": "",
+            "car": "",
+            "default": ["", "", ""]
+        },
+        "on-click": "pavucontrol"
+    },
+    "network": {
+        "format-wifi": "{essid} <span font-family='Font Awesome 6 Free'></span>",
+        "format-ethernet": "{ipaddr}/{cidr} <span font-family='Font Awesome 6 Free'></span>",
+        "tooltip-format": "{ifname} via {gwaddr} <span font-family='Font Awesome 6 Free'></span>",
+        "format-linked": "{ifname} (No IP) <span font-family='Font Awesome 6 Free'></span>",
+        "format-disconnected": "Disconnected <span font-family='Font Awesome 6 Free'>⚠</span>",
+        "on-click": "nm-connection-editor"
+    },
+    "backlight": {
+        "format": "{percent}% <span font-family='Font Awesome 6 Free'>{icon}</span>",
+        "format-icons": ["", "", "", "", "", "", "", "", ""],
+        "tooltip": false
+    },
+    "hyprland/language": {
+        "format": "{}",
+        "format-en": "burger",
+        "format-fr": "baguette",
+    },
+    "battery": {
+        "states": {
+            "warning": 30,
+            "critical": 15
+        },
+        "format": "{capacity}% <span font-family='Font Awesome 6 Free'>{icon}</span>",
+        "format-full": "{capacity}% <span font-family='Font Awesome 6 Free'>{icon}</span>",
+        "format-charging": "{capacity}% <span font-family='Font Awesome 6 Free'></span>",
+        "format-plugged": "{capacity}% <span font-family='Font Awesome 6 Free'></span>",
+        "format-icons": ["", "", "", "", ""]
+    },
+    "clock": {
+        "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
+    },
+    "tray": {
+        "spacing": 10
+    },
+}
