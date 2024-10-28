@@ -14,22 +14,55 @@ return {
         ['textDocument/signatureHelp'] = vim.lsp.with(vim.lsp.handlers.signature_help, { border = 'rounded' }),
       }
 
-      local setup_server = function(server_name)
-        lspconfig[server_name].setup {
-          on_attach = keymaps.on_attach,
-          capabilities = capabilities,
-          handlers = handlers,
-        }
+      local setup_server = function(server_name, opts)
+        opts = vim.tbl_deep_extend("error",
+          {
+            on_attach = keymaps.on_attach,
+            capabilities = capabilities,
+            handlers = handlers
+          }, opts)
+        lspconfig[server_name].setup(opts)
       end
 
       local servers = {
-        'rust_analyzer',
-        'lua_ls',
-        'ts_ls',
+        lua_ls = {},
+        nil_ls = {},
+        rust_analyzer = {},
+        clangd = {
+          cmd = {
+            "clangd",
+            "--header-insertion=never"
+          }
+        },
+        ts_ls = {
+          init_options = {
+            plugins = {
+              {
+                name = "@vue/typescript-plugin",
+                location = "/home/ugo/.npm-global/lib/node_modules/@vue/typescript-plugin",
+                languages = { "javascript", "typescript", "vue" },
+              },
+            },
+          },
+          filetypes = {
+            "javascript",
+            "typescript",
+            "vue",
+          },
+        },
+        volar = {},
+        elixirls = {
+          cmd = { "elixir-ls" }
+        },
+        emmet_ls = {},
+        eslint = {},
+        tailwindcss = {},
+        dockerls = {},
+        gopls = {}
       }
 
-      for _, server in ipairs(servers) do
-        setup_server(server)
+      for server, opts in pairs(servers) do
+        setup_server(server, opts)
       end
     end,
   },

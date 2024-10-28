@@ -16,7 +16,7 @@ vim.opt.rtp:prepend(lazypath)
 
 require('lazy').setup('plugins', {
   install = {
-    colorscheme = { 'cyberdream' },
+    colorscheme = { 'kanagawa' },
   },
   change_detection = {
     notify = false,
