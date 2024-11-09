@@ -20,7 +20,8 @@ export DIFFPROG='nvim -d'
 PS1='[\u@\h \W]\$ '
 eval "$(starship init bash)"
 eval "$(fzf --bash)"
-eval $(thefuck --alias)
+eval "$(thefuck --alias)"
+eval "$(direnv hook bash)"
 
 [ -f "$HOME/.ghcup/env" ] && . "$HOME/.ghcup/env"
 [ -f "$HOME/.cargo/env" ] && . "$HOME/.cargo/env"
