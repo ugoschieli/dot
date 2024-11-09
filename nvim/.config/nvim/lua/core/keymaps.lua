@@ -46,6 +46,7 @@ M.on_attach = function(_, buffer)
   map('gd', vim.lsp.buf.definition, 'Go to definition', nil, opts)
   map('gi', vim.lsp.buf.implementation, 'Go to implementation', nil, opts)
   map('<leader>D', vim.lsp.buf.type_definition, 'Show type definition', nil, opts)
+  map('<leader>rn', vim.lsp.buf.rename, 'Rename symbol', nil, opts)
 end
 
 return M

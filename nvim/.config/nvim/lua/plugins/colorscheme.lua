@@ -31,15 +31,15 @@ return {
     opts = {
       palette = {
         main = {
-          base = "#000000"
+          base = '#000000',
         },
-      }
+      },
     },
     config = function(_, opts)
       require('rose-pine').setup(opts)
-      vim.cmd("colorscheme rose-pine")
+      vim.cmd 'colorscheme rose-pine'
     end,
-  }
+  },
 }
 
 -- return {

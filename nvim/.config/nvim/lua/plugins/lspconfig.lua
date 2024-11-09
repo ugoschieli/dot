@@ -15,12 +15,11 @@ return {
       }
 
       local setup_server = function(server_name, opts)
-        opts = vim.tbl_deep_extend("error",
-          {
-            on_attach = keymaps.on_attach,
-            capabilities = capabilities,
-            handlers = handlers
-          }, opts)
+        opts = vim.tbl_deep_extend('error', {
+          on_attach = keymaps.on_attach,
+          capabilities = capabilities,
+          handlers = handlers,
+        }, opts)
         lspconfig[server_name].setup(opts)
       end
 
@@ -30,35 +29,35 @@ return {
         rust_analyzer = {},
         clangd = {
           cmd = {
-            "clangd",
-            "--header-insertion=never"
-          }
+            'clangd',
+            '--header-insertion=never',
+          },
         },
         ts_ls = {
           init_options = {
             plugins = {
               {
-                name = "@vue/typescript-plugin",
-                location = "/home/ugo/.npm-global/lib/node_modules/@vue/typescript-plugin",
-                languages = { "javascript", "typescript", "vue" },
+                name = '@vue/typescript-plugin',
+                location = '/home/ugo/.npm-global/lib/node_modules/@vue/typescript-plugin',
+                languages = { 'javascript', 'typescript', 'vue' },
               },
             },
           },
           filetypes = {
-            "javascript",
-            "typescript",
-            "vue",
+            'javascript',
+            'typescript',
+            'vue',
           },
         },
         volar = {},
         elixirls = {
-          cmd = { "elixir-ls" }
+          cmd = { 'elixir-ls' },
         },
         emmet_ls = {},
         eslint = {},
         tailwindcss = {},
         dockerls = {},
-        gopls = {}
+        gopls = {},
       }
 
       for server, opts in pairs(servers) do

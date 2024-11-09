@@ -15,9 +15,9 @@ return {
       vue = { 'prettierd' },
     },
     formatters = {
-      ["clang-format"] = {
-        prepend_args = { "--sort-includes=0", "--style=webkit" }
-      }
+      ['clang-format'] = {
+        prepend_args = { '--sort-includes=0', '--style=webkit' },
+      },
     },
     format_on_save = {
       timeout_ms = 500,
