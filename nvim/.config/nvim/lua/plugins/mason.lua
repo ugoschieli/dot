@@ -1,29 +1,16 @@
 return {
   {
-    'neovim/nvim-lspconfig',
+    'williamboman/mason.nvim',
     dependencies = {
+      'williamboman/mason-lspconfig.nvim',
+      'neovim/nvim-lspconfig',
       'hrsh7th/cmp-nvim-lsp',
+      'zapling/mason-conform.nvim',
+      'stevearc/conform.nvim',
     },
-    event = 'VeryLazy',
-    config = function()
-      local lspconfig = require 'lspconfig'
-      local keymaps = require 'core.keymaps'
-      local capabilities = require('cmp_nvim_lsp').default_capabilities()
-      local handlers = {
-        ['textDocument/hover'] = vim.lsp.with(vim.lsp.handlers.hover, { border = 'rounded' }),
-        ['textDocument/signatureHelp'] = vim.lsp.with(vim.lsp.handlers.signature_help, { border = 'rounded' }),
-      }
-
-      local setup_server = function(server_name, opts)
-        opts = vim.tbl_deep_extend('error', {
-          on_attach = keymaps.on_attach,
-          capabilities = capabilities,
-          handlers = handlers,
-        }, opts)
-        lspconfig[server_name].setup(opts)
-      end
-
-      local servers = {
+    lazy = false,
+    opts = {
+      servers = {
         lua_ls = {},
         nil_ls = {},
         rust_analyzer = {},
@@ -58,10 +45,27 @@ return {
         tailwindcss = {},
         dockerls = {},
         gopls = {},
+      },
+    },
+    config = function(_, opts)
+      local lsp = require 'utils.lsp'
+
+      local function keys(t)
+        local key_t = {}
+        for key, _ in pairs(t) do
+          table.insert(key_t, key)
+        end
+        return key_t
+      end
+
+      require('mason').setup()
+      require('mason-conform').setup {}
+      require('mason-lspconfig').setup {
+        ensure_installed = keys(opts.servers),
       }
 
-      for server, opts in pairs(servers) do
-        setup_server(server, opts)
+      for server, server_opts in pairs(opts.servers) do
+        lsp.setup_server(server, server_opts)
       end
     end,
   },
