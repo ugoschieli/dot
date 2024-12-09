@@ -12,7 +12,6 @@ return {
     opts = {
       servers = {
         lua_ls = {},
-        nil_ls = {},
         rust_analyzer = {},
         clangd = {
           cmd = {
