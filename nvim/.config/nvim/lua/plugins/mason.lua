@@ -19,27 +19,7 @@ return {
             '--header-insertion=never',
           },
         },
-        ts_ls = {
-          init_options = {
-            plugins = {
-              {
-                name = '@vue/typescript-plugin',
-                location = '/home/ugo/.npm-global/lib/node_modules/@vue/typescript-plugin',
-                languages = { 'javascript', 'typescript', 'vue' },
-              },
-            },
-          },
-          filetypes = {
-            'javascript',
-            'typescript',
-            'vue',
-          },
-        },
-        volar = {},
-        elixirls = {
-          cmd = { 'elixir-ls' },
-        },
-        emmet_ls = {},
+        ts_ls = {},
         eslint = {},
         tailwindcss = {},
         dockerls = {},

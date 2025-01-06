@@ -1,7 +1,8 @@
 if type brew &>/dev/null; then
     FPATH=$(brew --prefix)/share/zsh-completions:$FPATH
+    export PATH=/opt/homebrew/opt/llvm/bin:$PATH
 fi
-FPATH=$HOME/.docker/completions:$FPATH
+FPATH=$HOME/.local/share/zsh-completion/completions:$FPATH
 
 autoload -Uz compinit
 compinit
