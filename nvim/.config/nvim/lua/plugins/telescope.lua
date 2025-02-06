@@ -11,6 +11,11 @@ return {
   },
   keys = {
     { '<leader>fh', function() require('telescope.builtin').help_tags() end, desc = 'Find help' },
+    {
+      '<leader>fm',
+      function() require('telescope.builtin').man_pages { sections = { 'ALL' } } end,
+      desc = 'Find man pages',
+    },
     { '<leader>fk', function() require('telescope.builtin').keymaps() end, desc = 'Find keymaps' },
     { '<leader>ff', function() require('telescope.builtin').find_files() end, desc = 'Find files' },
     {

@@ -11,4 +11,7 @@ return {
   keys = {
     { '<leader>g', '<cmd>Neogit<cr>' },
   },
+  cmd = {
+    'Neogit',
+  },
 }

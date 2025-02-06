@@ -30,6 +30,9 @@ vim.diagnostic.config {
     prefix = '●',
     source = true,
   },
+  virtual_lines = {
+    current_line = true,
+  },
   update_in_insert = false,
   severity_sort = true,
   float = {
