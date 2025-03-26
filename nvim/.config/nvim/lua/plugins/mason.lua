@@ -9,24 +9,7 @@ return {
       'stevearc/conform.nvim',
     },
     lazy = false,
-    opts = {
-      servers = {
-        lua_ls = {},
-        rust_analyzer = {},
-        clangd = {
-          cmd = {
-            'clangd',
-            '--header-insertion=never',
-          },
-        },
-        ts_ls = {},
-        eslint = {},
-        tailwindcss = {},
-        dockerls = {},
-        gopls = {},
-      },
-    },
-    config = function(_, opts)
+    config = function(_, _)
       local lsp = require 'utils.lsp'
 
       local function keys(t)
@@ -37,13 +20,50 @@ return {
         return key_t
       end
 
+      local opts = {
+        servers = {
+          lua_ls = {},
+          ts_ls = {},
+          eslint = {},
+          emmet_language_server = {},
+          tailwindcss = {},
+          dockerls = {},
+          gopls = {},
+        },
+      }
+
+      local local_servers = {
+        servers = {
+          rust_analyzer = {},
+          clangd = {
+            cmd = {
+              'clangd',
+              '--header-insertion=never',
+            },
+          },
+          hls = {
+            filetypes = { 'haskell', 'lhaskell', 'cabal' },
+          },
+        },
+      }
+
+      local local_formatters = {
+        'clang-format',
+      }
+
       require('mason').setup()
-      require('mason-conform').setup {}
+      require('mason-conform').setup {
+        ignore_install = local_formatters,
+      }
       require('mason-lspconfig').setup {
         ensure_installed = keys(opts.servers),
       }
 
       for server, server_opts in pairs(opts.servers) do
+        lsp.setup_server(server, server_opts)
+      end
+
+      for server, server_opts in pairs(local_servers.servers) do
         lsp.setup_server(server, server_opts)
       end
     end,

@@ -1,5 +1,7 @@
 local M = {}
 
+---@param server_name string
+---@param opts any
 M.setup_server = function(server_name, opts)
   local lspconfig = require 'lspconfig'
   local keymaps = require 'core.keymaps'
@@ -9,7 +11,7 @@ M.setup_server = function(server_name, opts)
     ['textDocument/signatureHelp'] = vim.lsp.with(vim.lsp.handlers.signature_help, { border = 'rounded' }),
   }
 
-  opts = vim.tbl_deep_extend('error', {
+  opts = vim.tbl_deep_extend('force', {
     on_attach = keymaps.on_attach,
     capabilities = capabilities,
     handlers = handlers,
