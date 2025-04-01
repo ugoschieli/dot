@@ -4,7 +4,6 @@ return {
     dependencies = {
       'williamboman/mason-lspconfig.nvim',
       'neovim/nvim-lspconfig',
-      'hrsh7th/cmp-nvim-lsp',
       'zapling/mason-conform.nvim',
       'stevearc/conform.nvim',
     },
@@ -59,12 +58,12 @@ return {
         ensure_installed = keys(opts.servers),
       }
 
-      for server, server_opts in pairs(opts.servers) do
-        lsp.setup_server(server, server_opts)
+      for server, config in pairs(opts.servers) do
+        lsp.setup_server(server, config)
       end
 
-      for server, server_opts in pairs(local_servers.servers) do
-        lsp.setup_server(server, server_opts)
+      for server, config in pairs(local_servers.servers) do
+        lsp.setup_server(server, config)
       end
     end,
   },
