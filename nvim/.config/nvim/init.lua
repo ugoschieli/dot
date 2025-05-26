@@ -1,6 +1,6 @@
 if not vim.g.vscode then
   require 'core.options'
-  require('core.keymaps').setup_keymaps()
+  require 'core.keymaps'
   require 'core.autocommands'
 
   local lazypath = vim.fn.stdpath 'data' .. '/lazy/lazy.nvim'

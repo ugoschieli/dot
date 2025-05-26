@@ -2,8 +2,7 @@ local M = {}
 
 ---@param server string
 ---@param config any
-M.setup_server = function(server, config)
-  local lspconfig = require 'lspconfig'
+function M.setup_server(server, config)
   local keymaps = require 'core.keymaps'
   local capabilities = require('blink.cmp').get_lsp_capabilities(config.capabilities)
 
@@ -12,7 +11,9 @@ M.setup_server = function(server, config)
     capabilities = capabilities,
   }, config)
 
-  lspconfig[server].setup(config)
+  -- lspconfig[server].setup(config)
+  vim.lsp.config(server, config)
+  vim.lsp.enable(server)
 end
 
 return M

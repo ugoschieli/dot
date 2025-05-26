@@ -10,14 +10,7 @@ return {
     lazy = false,
     config = function(_, _)
       local lsp = require 'utils.lsp'
-
-      local function keys(t)
-        local key_t = {}
-        for key, _ in pairs(t) do
-          table.insert(key_t, key)
-        end
-        return key_t
-      end
+      local utils = require 'utils'
 
       local opts = {
         servers = {
@@ -28,6 +21,9 @@ return {
           tailwindcss = {},
           dockerls = {},
           gopls = {},
+          arduino_language_server = {},
+          cssls = {},
+          html = {},
         },
       }
 
@@ -55,14 +51,12 @@ return {
         ignore_install = local_formatters,
       }
       require('mason-lspconfig').setup {
-        ensure_installed = keys(opts.servers),
+        ensure_installed = utils.keys(opts.servers),
+        automatic_installation = false,
       }
 
-      for server, config in pairs(opts.servers) do
-        lsp.setup_server(server, config)
-      end
-
-      for server, config in pairs(local_servers.servers) do
+      local all = vim.tbl_deep_extend('error', opts, local_servers)
+      for server, config in pairs(all.servers) do
         lsp.setup_server(server, config)
       end
     end,
