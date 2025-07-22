@@ -24,18 +24,19 @@ return {
           arduino_language_server = {},
           cssls = {},
           html = {},
+          clangd = {},
         },
       }
 
       local local_servers = {
         servers = {
           rust_analyzer = {},
-          clangd = {
-            cmd = {
-              'clangd',
-              '--header-insertion=never',
-            },
-          },
+          -- clangd = {
+          --   cmd = {
+          --     'clangd',
+          --     '--header-insertion=never',
+          --   },
+          -- },
           hls = {
             filetypes = { 'haskell', 'lhaskell', 'cabal' },
           },

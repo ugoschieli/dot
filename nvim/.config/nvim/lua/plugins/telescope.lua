@@ -17,7 +17,12 @@ return {
       desc = 'Find man pages',
     },
     { '<leader>fk', function() require('telescope.builtin').keymaps() end, desc = 'Find keymaps' },
-    { '<leader>ff', function() require('telescope.builtin').find_files() end, desc = 'Find files' },
+    { '<leader>ff', function() require('telescope.builtin').find_files { hidden = true } end, desc = 'Find files' },
+    {
+      '<leader>fa',
+      function() require('telescope.builtin').find_files { hidden = true, no_ignore = true } end,
+      desc = 'Find all files',
+    },
     {
       '<leader>fw',
       function() require('telescope.builtin').grep_string() end,

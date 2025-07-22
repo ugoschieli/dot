@@ -27,6 +27,10 @@ export PATH=$ANDROID_HOME/emulator:$PATH
 export PATH=$ANDROID_HOME/platform-tools:$PATH
 export PATH=$HOME/go/bin:$PATH
 
-eval "$(fzf --zsh)"
-eval "$(starship init zsh)"
-eval "$(mise activate zsh)"
+# eval "$(fzf --zsh)"
+# eval "$(starship init zsh)"
+# eval "$(mise activate zsh)"
+
+export STM32_PRG_PATH=/Applications/STMicroelectronics/STM32Cube/STM32CubeProgrammer/STM32CubeProgrammer.app/Contents/MacOs/bin
+
+exec fish
