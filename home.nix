@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ config, pkgs, myneovim, ... }:
 
 {
   # Home Manager needs a bit of information about you and the paths it should
@@ -34,6 +34,60 @@
     # (pkgs.writeShellScriptBin "my-hello" ''
     #   echo "Hello, ${config.home.username}!"
     # '')
+
+    # cli utils
+    pkgs.bat
+    pkgs.eza
+    pkgs.fd
+    pkgs.ripgrep
+    pkgs.jq
+    pkgs.fzf
+    pkgs.tree
+    pkgs.wget
+    pkgs.tokei
+    pkgs.htop
+    pkgs.nmap
+    pkgs.iproute2mac
+    pkgs.gnupg
+    pkgs.lz4
+
+    # desktop env
+    pkgs.zsh-completions
+    pkgs.fish
+    pkgs.tmux
+    myneovim
+    pkgs.starship
+
+    # gui
+    pkgs.ghostty-bin
+    pkgs.google-chrome
+    pkgs.raycast
+    pkgs.qbittorrent
+    pkgs.discord
+    pkgs.iina
+    pkgs.prismlauncher
+    pkgs.obsidian
+    pkgs.moonlight-qt
+    pkgs.utm
+
+    #dev
+    pkgs.bruno
+    pkgs.qemu
+    pkgs.gitflow
+    pkgs.watchman
+    pkgs.bear
+    pkgs.cmake
+    pkgs.ninja
+    pkgs.cocoapods
+    pkgs.protobuf
+    pkgs.platformio
+    pkgs.openocd
+    pkgs.gcc-arm-embedded
+    pkgs.bun
+    pkgs.nodejs
+    pkgs.clang
+    pkgs.go
+    pkgs.zulu17
   ];
 
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
@@ -49,6 +103,8 @@
     #   org.gradle.console=verbose
     #   org.gradle.daemon.idletimeout=3600000
     # '';
+    ".config/starship.toml".source = starship/starship.toml;
+    ".config/tmux/tmux.conf".source = tmux/tmux.conf;
   };
 
   # Home Manager can also manage your environment variables through
@@ -68,7 +124,35 @@
   #  /etc/profiles/per-user/ugo/etc/profile.d/hm-session-vars.sh
   #
   home.sessionVariables = {
-    # EDITOR = "emacs";
+    EDITOR = "nvim";
+    DIFFPROG = "nvim -d";
+    MANPAGER = "nvim +Man!";
+    MANWIDTH = "999";
+    ANDROID_HOME = "$HOME/Library/Android/sdk";
+  };
+
+  home.sessionPath = [
+    "PATH=$HOME/go/bin"
+    "$ANDROID_HOME/emulator"
+    "$ANDROID_HOME/platform-tools"
+  ];
+
+  programs.fish = {
+    enable = true;
+    shellAliases = {
+      ls = "eza";
+      cat = "bat";
+    };
+  };
+
+  programs.fzf = {
+    enable = true;
+    enableFishIntegration = true;
+  };
+
+  programs.starship = {
+    enable = true;
+    enableFishIntegration = true;
   };
 
   # Let Home Manager install and manage itself.
