@@ -56,6 +56,7 @@
     pkgs.tmux
     myneovim
     pkgs.starship
+    pkgs.nerd-fonts.jetbrains-mono
 
     # gui
     pkgs.ghostty-bin
@@ -86,7 +87,6 @@
     pkgs.nodejs
     pkgs.clang
     pkgs.go
-    pkgs.zulu17
     rust-stable
   ];
 
@@ -153,6 +153,11 @@
   programs.starship = {
     enable = true;
     enableFishIntegration = true;
+  };
+
+  programs.java = {
+    enable = true;
+    package = pkgs.zulu17;
   };
 
   # Let Home Manager install and manage itself.
