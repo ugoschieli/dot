@@ -1,5 +1,4 @@
-{ config, pkgs, myneovim, ... }:
-
+{ config, pkgs, rust-stable, myneovim, ... }:
 {
   # Home Manager needs a bit of information about you and the paths it should
   # manage.
@@ -88,6 +87,7 @@
     pkgs.clang
     pkgs.go
     pkgs.zulu17
+    rust-stable
   ];
 
   # Home Manager is pretty good at managing dotfiles. The primary way to manage

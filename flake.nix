@@ -5,6 +5,10 @@
     # Specify the source of Home Manager and Nixpkgs.
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     myneovim.url = "git+file:./neovim";
+    fenix = {
+      url = "github:nix-community/fenix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -12,7 +16,7 @@
   };
 
   outputs =
-    { nixpkgs, myneovim, home-manager, ... }:
+    { nixpkgs, myneovim, fenix, home-manager, ... }:
     let
       system = "aarch64-darwin";
       pkgs = import nixpkgs { inherit system; config.allowUnfree = true; };
@@ -29,6 +33,7 @@
         # to pass through arguments to home.nix
         extraSpecialArgs = {
           myneovim = myneovim.packages.${system}.default;
+          rust-stable = fenix.packages.${system}.stable.toolchain;
         };
       };
     };
