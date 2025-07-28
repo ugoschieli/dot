@@ -80,7 +80,6 @@
     pkgs.ninja
     pkgs.cocoapods
     pkgs.protobuf
-    pkgs.platformio
     pkgs.openocd
     pkgs.gcc-arm-embedded
     pkgs.bun

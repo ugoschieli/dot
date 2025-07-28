@@ -190,14 +190,16 @@
     "myneovim": {
       "inputs": {
         "neovim": "neovim",
-        "nixpkgs": "nixpkgs_2"
+        "nixpkgs": [
+          "nixpkgs"
+        ]
       },
       "locked": {
-        "lastModified": 1753708498,
-        "narHash": "sha256-0FhHkwj2+nw2Uz0v9xJbxW9cSdtSbJ1LY2LcL+uooG0=",
+        "lastModified": 1753724476,
+        "narHash": "sha256-tp5fBs/YS5Sf8tY5HP92vdV1auT0PGmehcEp4IoTA2k=",
         "ref": "refs/heads/main",
-        "rev": "ae07ca85c874a11b19619a110312052841c65dc4",
-        "revCount": 2,
+        "rev": "b26bfa926044f907fbdd1855c6c5336ac5b238b1",
+        "revCount": 4,
         "type": "git",
         "url": "file:./neovim"
       },
@@ -213,7 +215,10 @@
         "git-hooks": "git-hooks",
         "hercules-ci-effects": "hercules-ci-effects",
         "neovim-src": "neovim-src",
-        "nixpkgs": "nixpkgs",
+        "nixpkgs": [
+          "myneovim",
+          "nixpkgs"
+        ],
         "treefmt-nix": "treefmt-nix"
       },
       "locked": {
@@ -248,38 +253,6 @@
     },
     "nixpkgs": {
       "locked": {
-        "lastModified": 1753432016,
-        "narHash": "sha256-cnL5WWn/xkZoyH/03NNUS7QgW5vI7D1i74g48qplCvg=",
-        "owner": "NixOS",
-        "repo": "nixpkgs",
-        "rev": "6027c30c8e9810896b92429f0092f624f7b1aace",
-        "type": "github"
-      },
-      "original": {
-        "owner": "NixOS",
-        "ref": "nixpkgs-unstable",
-        "repo": "nixpkgs",
-        "type": "github"
-      }
-    },
-    "nixpkgs_2": {
-      "locked": {
-        "lastModified": 1753549186,
-        "narHash": "sha256-Znl7rzuxKg/Mdm6AhimcKynM7V3YeNDIcLjBuoBcmNs=",
-        "owner": "nixos",
-        "repo": "nixpkgs",
-        "rev": "17f6bd177404d6d43017595c5264756764444ab8",
-        "type": "github"
-      },
-      "original": {
-        "owner": "nixos",
-        "ref": "nixos-unstable",
-        "repo": "nixpkgs",
-        "type": "github"
-      }
-    },
-    "nixpkgs_3": {
-      "locked": {
         "lastModified": 1753549186,
         "narHash": "sha256-Znl7rzuxKg/Mdm6AhimcKynM7V3YeNDIcLjBuoBcmNs=",
         "owner": "nixos",
@@ -299,7 +272,7 @@
         "fenix": "fenix",
         "home-manager": "home-manager",
         "myneovim": "myneovim",
-        "nixpkgs": "nixpkgs_3"
+        "nixpkgs": "nixpkgs"
       }
     },
     "rust-analyzer-src": {
