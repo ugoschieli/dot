@@ -62,7 +62,6 @@
     pkgs.ghostty-bin
     pkgs.google-chrome
     pkgs.raycast
-    pkgs.qbittorrent
     pkgs.discord
     pkgs.iina
     pkgs.prismlauncher

@@ -195,11 +195,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1753724476,
-        "narHash": "sha256-tp5fBs/YS5Sf8tY5HP92vdV1auT0PGmehcEp4IoTA2k=",
+        "lastModified": 1755590955,
+        "narHash": "sha256-N9Mcn0ySxn9ZKUwdE54CbTREddynLN2X7JY0rKWt11E=",
         "ref": "refs/heads/main",
-        "rev": "b26bfa926044f907fbdd1855c6c5336ac5b238b1",
-        "revCount": 4,
+        "rev": "1cce9c15ee7b8c41cd086f9574ea9ee5540718bb",
+        "revCount": 5,
         "type": "git",
         "url": "file:./neovim"
       },
