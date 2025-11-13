@@ -1,0 +1,38 @@
+{
+  "editor.fontFamily": "JetBrainsMono Nerd Font",
+  "editor.fontSize": 14,
+  "editor.formatOnSave": true,
+  "files.autoSave": "afterDelay",
+  "files.autoSaveDelay": 50,
+  "gitlens.plusFeatures.enabled": false,
+  "workbench.colorCustomizations": {
+    "[Rosé Pine]": {
+      "activityBar.background": "#000000",
+      "activityBarBadge.foreground": "#000000",
+      "badge.foreground": "#000000",
+      "breadcrumb.background": "#000000",
+      "button.foreground": "#000000",
+      "editor.background": "#000000",
+      "editor.selectionHighlightBorder": "#000000",
+      "editorGutter.background": "#000000",
+      "editorOverviewRuler.background": "#000000",
+      "extensionBadge.remoteForeground": "#000000",
+      "extensionButton.prominentForeground": "#000000",
+      "sideBar.background": "#000000",
+      "statusBar.background": "#000000",
+      "statusBar.debuggingForeground": "#000000",
+      "statusBar.noFolderBackground": "#000000",
+      "statusBarItem.remoteBackground": "#000000",
+      "statusBarItem.errorBackground": "#000000",
+      "titleBar.activeBackground": "#000000",
+      "walkThrough.embeddedEditorBackground": "#000000",
+      "welcomePage.background": "#000000"
+    }
+  },
+  "workbench.colorTheme": "Rosé Pine",
+  "workbench.iconTheme": "symbols",
+  "workbench.productIconTheme": "fluent-icons",
+  "workbench.startupEditor": "none",
+  "workbench.sideBar.location": "right",
+  "rust-analyzer.server.path": "rust-analyzer"
+}
