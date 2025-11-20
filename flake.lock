@@ -174,18 +174,14 @@
         ]
       },
       "locked": {
-        "lastModified": 1759415558,
-        "narHash": "sha256-snA5Z7vwdVW6v6lojAGeTHHLkiZs0fb81d8ZUiegxJU=",
-        "ref": "refs/heads/main",
-        "rev": "81f4898a183e116b3ee7be9c2f38da79f72e54e0",
-        "revCount": 8,
-        "type": "git",
-        "url": "file:./neovim"
+        "path": "neovim",
+        "type": "path"
       },
       "original": {
-        "type": "git",
-        "url": "file:./neovim"
-      }
+        "path": "neovim",
+        "type": "path"
+      },
+      "parent": []
     },
     "neovim": {
       "inputs": {

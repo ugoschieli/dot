@@ -2,10 +2,12 @@
   description = "Home Manager configuration of ugo";
 
   inputs = {
+    self.submodules = true;
+
     # Specify the source of Home Manager and Nixpkgs.
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     myneovim = {
-      url= "git+file:./neovim";
+      url= ./neovim;
       inputs.nixpkgs.follows = "nixpkgs";
     };
     rust-overlay = {

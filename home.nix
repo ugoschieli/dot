@@ -85,7 +85,9 @@
     pkgs.nodejs
     pkgs.clang
     pkgs.go
-    pkgs.rust-bin.stable."1.90.0".default
+    (pkgs.rust-bin.stable."1.91.1".default.override {
+      extensions = ["rust-analyzer"];
+    })
   ];
 
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
