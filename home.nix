@@ -1,4 +1,4 @@
-{ config, pkgs, rust-stable, myneovim, ... }:
+{ config, pkgs, myneovim, ... }:
 {
   # Home Manager needs a bit of information about you and the paths it should
   # manage.
@@ -85,7 +85,7 @@
     pkgs.nodejs
     pkgs.clang
     pkgs.go
-    rust-stable
+    pkgs.rust-bin.stable."1.90.0".default
   ];
 
   # Home Manager is pretty good at managing dotfiles. The primary way to manage

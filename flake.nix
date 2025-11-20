@@ -8,8 +8,8 @@
       url= "git+file:./neovim";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    fenix = {
-      url = "github:nix-community/fenix";
+    rust-overlay = {
+      url = "github:oxalica/rust-overlay";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     home-manager = {
@@ -19,10 +19,11 @@
   };
 
   outputs =
-    { nixpkgs, myneovim, fenix, home-manager, ... }:
+    { nixpkgs, myneovim, rust-overlay, home-manager, ... }:
     let
       system = "aarch64-darwin";
-      pkgs = import nixpkgs { inherit system; config.allowUnfree = true; };
+      overlays = [(import rust-overlay)];
+      pkgs = import nixpkgs { inherit system overlays; config.allowUnfree = true; };
     in
     {
       homeConfigurations."ugo" = home-manager.lib.homeManagerConfiguration {
@@ -36,7 +37,6 @@
         # to pass through arguments to home.nix
         extraSpecialArgs = {
           myneovim = myneovim.packages.${system}.default;
-          rust-stable = fenix.packages.${system}.stable.toolchain;
         };
       };
     };
