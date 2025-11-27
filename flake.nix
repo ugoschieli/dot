@@ -5,7 +5,7 @@
     self.submodules = true;
 
     # Specify the source of Home Manager and Nixpkgs.
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+    nixpkgs.url = "github:nixos/nixpkgs/nixpkgs-unstable";
     myneovim = {
       url= ./neovim;
       inputs.nixpkgs.follows = "nixpkgs";

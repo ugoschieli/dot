@@ -160,52 +160,52 @@
     package = pkgs.zulu17;
   };
 
-  programs.vscode = {
-    enable = true;
-    profiles.default = {
-      userSettings = builtins.fromJSON (builtins.readFile ./vscode/settings.json);
-      extensions = [
-        pkgs.vscode-extensions.vscodevim.vim
-        pkgs.vscode-extensions.mvllow.rose-pine
-        pkgs.vscode-extensions.eamodio.gitlens
-        pkgs.vscode-extensions.anthropic.claude-code
-        pkgs.vscode-extensions.esbenp.prettier-vscode
-        pkgs.vscode-extensions.dbaeumer.vscode-eslint
-        pkgs.vscode-extensions.bradlc.vscode-tailwindcss
-        pkgs.vscode-extensions.prisma.prisma
-        pkgs.vscode-extensions.docker.docker
-        pkgs.vscode-extensions.rust-lang.rust-analyzer
-        pkgs.vscode-extensions.wgsl-analyzer.wgsl-analyzer 
-        pkgs.vscode-extensions.ms-azuretools.vscode-containers
-        pkgs.vscode-extensions.ms-dotnettools.csdevkit
-        pkgs.vscode-extensions.ms-dotnettools.csharp
-        pkgs.vscode-extensions.ms-dotnettools.vscode-dotnet-runtime
-        pkgs.vscode-extensions.visualstudiotoolsforunity.vstuc
-
-        (
-          pkgs.vscode-utils.buildVscodeMarketplaceExtension {
-            mktplcRef = {
-              name = "fluent-icons";
-              publisher = "miguelsolorio";
-              version = "0.0.19";
-              sha256 = "17rplc681rjpskn9h7lk02349j57vqyp7d7q76c3z9cs8j3x5wrr";
-            };
-          }
-        )
-
-        (
-          pkgs.vscode-utils.buildVscodeMarketplaceExtension {
-            mktplcRef = {
-              name = "symbols";
-              publisher = "miguelsolorio";
-              version = "0.0.24";
-              sha256 = "0n2pj4bnx74ygnbvrr26cssh10nidxdzkddaf31nysxzcwdklhf8";
-            };
-          }
-        )
-      ];
-    };
-  };
+  # programs.vscode = {
+  #   enable = true;
+  #   profiles.default = {
+  #     userSettings = builtins.fromJSON (builtins.readFile ./vscode/settings.json);
+  #     extensions = [
+  #       pkgs.vscode-extensions.vscodevim.vim
+  #       pkgs.vscode-extensions.mvllow.rose-pine
+  #       pkgs.vscode-extensions.eamodio.gitlens
+  #       pkgs.vscode-extensions.anthropic.claude-code
+  #       pkgs.vscode-extensions.esbenp.prettier-vscode
+  #       pkgs.vscode-extensions.dbaeumer.vscode-eslint
+  #       pkgs.vscode-extensions.bradlc.vscode-tailwindcss
+  #       pkgs.vscode-extensions.prisma.prisma
+  #       pkgs.vscode-extensions.docker.docker
+  #       pkgs.vscode-extensions.rust-lang.rust-analyzer
+  #       pkgs.vscode-extensions.wgsl-analyzer.wgsl-analyzer 
+  #       pkgs.vscode-extensions.ms-azuretools.vscode-containers
+  #       pkgs.vscode-extensions.ms-dotnettools.csdevkit
+  #       pkgs.vscode-extensions.ms-dotnettools.csharp
+  #       pkgs.vscode-extensions.ms-dotnettools.vscode-dotnet-runtime
+  #       pkgs.vscode-extensions.visualstudiotoolsforunity.vstuc
+  #
+  #       (
+  #         pkgs.vscode-utils.buildVscodeMarketplaceExtension {
+  #           mktplcRef = {
+  #             name = "fluent-icons";
+  #             publisher = "miguelsolorio";
+  #             version = "0.0.19";
+  #             sha256 = "17rplc681rjpskn9h7lk02349j57vqyp7d7q76c3z9cs8j3x5wrr";
+  #           };
+  #         }
+  #       )
+  #
+  #       (
+  #         pkgs.vscode-utils.buildVscodeMarketplaceExtension {
+  #           mktplcRef = {
+  #             name = "symbols";
+  #             publisher = "miguelsolorio";
+  #             version = "0.0.24";
+  #             sha256 = "0n2pj4bnx74ygnbvrr26cssh10nidxdzkddaf31nysxzcwdklhf8";
+  #           };
+  #         }
+  #       )
+  #     ];
+  #   };
+  # };
 
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
