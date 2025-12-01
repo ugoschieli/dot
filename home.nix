@@ -14,26 +14,7 @@
   # release notes.
   home.stateVersion = "25.05"; # Please read the comment before changing.
 
-  # The home.packages option allows you to install Nix packages into your
-  # environment.
   home.packages = [
-    # # Adds the 'hello' command to your environment. It prints a friendly
-    # # "Hello, world!" when run.
-    # pkgs.hello
-
-    # # It is sometimes useful to fine-tune packages, for example, by applying
-    # # overrides. You can do that directly here, just don't forget the
-    # # parentheses. Maybe you want to install Nerd Fonts with a limited number of
-    # # fonts?
-    # (pkgs.nerdfonts.override { fonts = [ "FantasqueSansMono" ]; })
-
-    # # You can also create simple shell scripts directly inside your
-    # # configuration. For example, this adds a command 'my-hello' to your
-    # # environment:
-    # (pkgs.writeShellScriptBin "my-hello" ''
-    #   echo "Hello, ${config.home.username}!"
-    # '')
-
     # cli utils
     pkgs.bat
     pkgs.eza
@@ -49,6 +30,8 @@
     pkgs.iproute2mac
     pkgs.gnupg
     pkgs.lz4
+    pkgs.age
+    pkgs.sops
 
     # desktop env
     pkgs.zsh-completions
@@ -137,6 +120,29 @@
     "$ANDROID_HOME/platform-tools"
   ];
 
+  sops = {
+    age.keyFile = "${config.home.homeDirectory}/.config/sops/age/keys.txt";
+    defaultSopsFile = ./secrets/ssh.yaml;
+    secrets = {
+      gh_perso_key = {
+        path = "${config.home.homeDirectory}/.ssh/id_ed25519";
+        mode = "0600";
+      };
+      gh_perso_public_key = {
+        path = "${config.home.homeDirectory}/.ssh/id_ed25519.pub";
+        mode = "0644";
+      };
+      gh_epitech_key = {
+        path = "${config.home.homeDirectory}/.ssh/epitech";
+        mode = "0600";
+      };
+      gh_epitech_public_key = {
+        path = "${config.home.homeDirectory}/.ssh/epitech.pub";
+        mode = "0644";
+      };
+    };
+  };
+
   programs.fish = {
     enable = true;
     shellAliases = {
@@ -159,53 +165,6 @@
     enable = true;
     package = pkgs.zulu17;
   };
-
-  # programs.vscode = {
-  #   enable = true;
-  #   profiles.default = {
-  #     userSettings = builtins.fromJSON (builtins.readFile ./vscode/settings.json);
-  #     extensions = [
-  #       pkgs.vscode-extensions.vscodevim.vim
-  #       pkgs.vscode-extensions.mvllow.rose-pine
-  #       pkgs.vscode-extensions.eamodio.gitlens
-  #       pkgs.vscode-extensions.anthropic.claude-code
-  #       pkgs.vscode-extensions.esbenp.prettier-vscode
-  #       pkgs.vscode-extensions.dbaeumer.vscode-eslint
-  #       pkgs.vscode-extensions.bradlc.vscode-tailwindcss
-  #       pkgs.vscode-extensions.prisma.prisma
-  #       pkgs.vscode-extensions.docker.docker
-  #       pkgs.vscode-extensions.rust-lang.rust-analyzer
-  #       pkgs.vscode-extensions.wgsl-analyzer.wgsl-analyzer 
-  #       pkgs.vscode-extensions.ms-azuretools.vscode-containers
-  #       pkgs.vscode-extensions.ms-dotnettools.csdevkit
-  #       pkgs.vscode-extensions.ms-dotnettools.csharp
-  #       pkgs.vscode-extensions.ms-dotnettools.vscode-dotnet-runtime
-  #       pkgs.vscode-extensions.visualstudiotoolsforunity.vstuc
-  #
-  #       (
-  #         pkgs.vscode-utils.buildVscodeMarketplaceExtension {
-  #           mktplcRef = {
-  #             name = "fluent-icons";
-  #             publisher = "miguelsolorio";
-  #             version = "0.0.19";
-  #             sha256 = "17rplc681rjpskn9h7lk02349j57vqyp7d7q76c3z9cs8j3x5wrr";
-  #           };
-  #         }
-  #       )
-  #
-  #       (
-  #         pkgs.vscode-utils.buildVscodeMarketplaceExtension {
-  #           mktplcRef = {
-  #             name = "symbols";
-  #             publisher = "miguelsolorio";
-  #             version = "0.0.24";
-  #             sha256 = "0n2pj4bnx74ygnbvrr26cssh10nidxdzkddaf31nysxzcwdklhf8";
-  #           };
-  #         }
-  #       )
-  #     ];
-  #   };
-  # };
 
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;

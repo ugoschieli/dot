@@ -14,6 +14,10 @@
       url = "github:oxalica/rust-overlay";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    sops-nix = {
+      url = "github:Mic92/sops-nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -21,7 +25,7 @@
   };
 
   outputs =
-    { nixpkgs, myneovim, rust-overlay, home-manager, ... }:
+    { nixpkgs, myneovim, rust-overlay, sops-nix, home-manager, ... }:
     let
       system = "aarch64-darwin";
       overlays = [(import rust-overlay)];
@@ -33,7 +37,7 @@
 
         # Specify your home configuration modules here, for example,
         # the path to your home.nix.
-        modules = [ ./home.nix ];
+        modules = [ ./home.nix sops-nix.homeManagerModules.sops ];
 
         # Optionally use extraSpecialArgs
         # to pass through arguments to home.nix
