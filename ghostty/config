@@ -1,0 +1,5 @@
+theme = "Rose Pine"
+background = "#000000"
+font-size = 18
+font-family = "JetBrainsMono Nerd Fonts Mono"
+font-thicken = true

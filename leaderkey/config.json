@@ -1,0 +1,42 @@
+{
+  "actions": [
+    {
+      "key": "a",
+      "label": "Applications",
+      "type": "application",
+      "value": "/Applications/Raycast.app"
+    },
+    {
+      "key": "enter",
+      "label": "Terminal",
+      "type": "application",
+      "value": "/Applications/Ghostty.app"
+    },
+    {
+      "actions": [
+        {
+          "key": "e",
+          "label": "Emoji",
+          "type": "url",
+          "value": "raycast://extensions/raycast/emoji-symbols/search-emoji-symbols"
+        },
+        {
+          "key": "p",
+          "label": "Confetti",
+          "type": "url",
+          "value": "raycast://confetti"
+        },
+        {
+          "key": "c",
+          "label": "Camera",
+          "type": "url",
+          "value": "raycast://extensions/raycast/system/open-camera"
+        }
+      ],
+      "key": "r",
+      "label": "Raycast",
+      "type": "group"
+    }
+  ],
+  "type": "group"
+}

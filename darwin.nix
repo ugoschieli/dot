@@ -22,22 +22,67 @@
       "sketchybar"
     ];
     casks = [
+      "ghostty"
       "leader-key"
+      "raycast"
+      "zen"
+      "google-chrome"
+      "microsoft-teams"
+      "discord"
+      "moonlight"
+      "iina"
+      "obsidian"
+      "utm"
     ];
   };
 
-  environment.systemPackages = [];
+  environment.systemPackages = [ pkgs.fish ];
+  environment.shells = [ pkgs.fish ];
+  programs.fish.enable = true;
 
   system.primaryUser = primaryUser;
   users.users.${primaryUser} = {
     home = "/Users/${primaryUser}";
-    shell = pkgs.zsh;
   };
 
-  system.defaults.NSGlobalDomain = { 
-    KeyRepeat = 2;
-    InitialKeyRepeat = 15;
-    "com.apple.swipescrolldirection" = false;
+  system.activationScripts.postActivation.text = ''
+    # Following line should allow us to avoid a logout/login cycle when changing settings
+    sudo -u ${primaryUser} /System/Library/PrivateFrameworks/SystemAdministration.framework/Resources/activateSettings -u
+    # Set fish as the default shell
+    sudo chsh -s /run/current-system/sw/bin/fish ${primaryUser}
+    '';
+
+  system.defaults = {
+    finder.AppleShowAllFiles = true;
+    NSGlobalDomain = { 
+      KeyRepeat = 2;
+      InitialKeyRepeat = 15;
+      "com.apple.swipescrolldirection" = false;
+    };
+    CustomUserPreferences = {
+      "com.apple.symbolichotkeys" = {
+        AppleSymbolicHotKeys = {
+          # Disable '^ + Space' for selecting the previous input source
+          "60" = { enabled = false; };
+          # Disable '^ + Option + Space' for selecting the next input source
+          "61" = { enabled = false; };
+          # Disable 'Cmd + Space' for Spotlight Search
+          "64" = { enabled = false; };
+          # Disable 'Cmd + Alt + Space' for Finder search window
+          "65" = { enabled = false; };
+        };
+      };
+    };
+    dock = {
+      autohide = true;
+      show-recents = false;
+      persistent-apps = [
+        { app = "/Applications/Google Chrome.app"; }
+        { app = "/Applications/Zen.app"; }
+        { app = "/Applications/Ghostty.app"; }
+      ];
+      persistent-others = [];
+    };
   };
 
   system.keyboard = {

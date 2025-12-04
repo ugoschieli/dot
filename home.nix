@@ -41,16 +41,6 @@
     pkgs.starship
     pkgs.nerd-fonts.jetbrains-mono
 
-    # gui
-    pkgs.ghostty-bin
-    pkgs.google-chrome
-    pkgs.raycast
-    pkgs.discord
-    pkgs.iina
-    pkgs.obsidian
-    pkgs.moonlight-qt
-    pkgs.utm
-
     #dev
     pkgs.bruno
     pkgs.qemu
@@ -86,8 +76,12 @@
     #   org.gradle.console=verbose
     #   org.gradle.daemon.idletimeout=3600000
     # '';
+    ".config/ghostty/config".source = ghostty/config;
     ".config/starship.toml".source = starship/starship.toml;
     ".config/tmux/tmux.conf".source = tmux/tmux.conf;
+    ".config/leaderkey/config.json".source = leaderkey/config.json;
+    ".gitconfig".source = git/.gitconfig;
+    ".ssh/config".source = git/.ssh/config;
   };
 
   # Home Manager can also manage your environment variables through
