@@ -28,6 +28,8 @@
       "zen"
       "google-chrome"
       "microsoft-teams"
+      "protonvpn"
+      "proton-drive"
       "discord"
       "moonlight"
       "iina"
