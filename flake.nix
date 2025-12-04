@@ -16,6 +16,20 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    nix-homebrew.url = "github:zhaofengli/nix-homebrew";
+    homebrew-core = {
+      url = "github:homebrew/homebrew-core";
+      flake = false;
+    };
+    homebrew-cask = {
+      url = "github:homebrew/homebrew-cask";
+      flake = false;
+    };
+    homebrew-felixkratz = {
+      url = "github:FelixKratz/homebrew-formulae";
+      flake = false;
+    };
+
     myneovim = {
       url= ./neovim;
       inputs.nixpkgs.follows = "nixpkgs";
@@ -32,12 +46,9 @@
     };
   };
 
-  outputs = inputs@{ self, nix-darwin, home-manager, nixpkgs, myneovim, rust-overlay, sops-nix }:
+  outputs = inputs@{ self, nix-darwin, home-manager, nixpkgs, nix-homebrew, homebrew-core, homebrew-cask, homebrew-felixkratz, myneovim, rust-overlay, sops-nix }:
   let
     primaryUser = "ugo";
-    # system = "aarch64-darwin";
-    # overlays = [(import rust-overlay)];
-    # pkgs = import nixpkgs { inherit system overlays; config.allowUnfree = true; };
   in
   {
     # Build darwin flake using:

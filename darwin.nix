@@ -1,7 +1,30 @@
-{ inputs, pkgs, self, primaryUser, myneovim, ... }: {
+{ config, inputs, pkgs, self, primaryUser, myneovim, ... }: {
   imports = [
     inputs.home-manager.darwinModules.home-manager
+    inputs.nix-homebrew.darwinModules.nix-homebrew
   ];
+
+  nix-homebrew = {
+    enable = true;
+    taps = {
+      "homebrew/homebrew-core" = inputs.homebrew-core;
+      "homebrew/homebrew-cask" = inputs.homebrew-cask;
+      "FelixKratz/homebrew-formulae" = inputs.homebrew-felixkratz;
+    };
+    user = primaryUser;
+    mutableTaps = false;
+  };
+
+  homebrew = {
+    enable = true;
+    taps = builtins.attrNames config.nix-homebrew.taps;
+    brews = [
+      "sketchybar"
+    ];
+    casks = [
+      "leader-key"
+    ];
+  };
 
   environment.systemPackages = [];
 
@@ -9,6 +32,17 @@
   users.users.${primaryUser} = {
     home = "/Users/${primaryUser}";
     shell = pkgs.zsh;
+  };
+
+  system.defaults.NSGlobalDomain = { 
+    KeyRepeat = 2;
+    InitialKeyRepeat = 15;
+    "com.apple.swipescrolldirection" = false;
+  };
+
+  system.keyboard = {
+    enableKeyMapping = true;
+    remapCapsLockToEscape = true;
   };
 
   # home-manager config
