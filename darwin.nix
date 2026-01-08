@@ -20,6 +20,10 @@
     taps = builtins.attrNames config.nix-homebrew.taps;
     brews = [
       "sketchybar"
+
+      # Needed for compiling some rust programs
+      "openssl"
+      "pkg-config"
     ];
     casks = [
       "ghostty"
@@ -28,6 +32,7 @@
       "zen"
       "google-chrome"
       "microsoft-teams"
+      "tidal"
       "protonvpn"
       "proton-drive"
       "discord"
@@ -38,7 +43,18 @@
     ];
   };
 
-  environment.systemPackages = [ pkgs.fish ];
+  environment.systemPackages = with pkgs; [ 
+    fish
+    libiconv
+    dioxus-cli
+  ];
+  environment.variables = {
+    # Add library search paths
+    LIBRARY_PATH = "${pkgs.libiconv}/lib";
+    # Also set rustflags
+    RUSTFLAGS = "-L ${pkgs.libiconv}/lib";
+  };
+
   environment.shells = [ pkgs.fish ];
   programs.fish.enable = true;
 
@@ -57,6 +73,7 @@
   system.defaults = {
     finder.AppleShowAllFiles = true;
     NSGlobalDomain = { 
+      ApplePressAndHoldEnabled = false;
       KeyRepeat = 2;
       InitialKeyRepeat = 15;
       "com.apple.swipescrolldirection" = false;
@@ -75,6 +92,7 @@
         };
       };
     };
+    controlcenter.BatteryShowPercentage = true;
     dock = {
       autohide = true;
       show-recents = false;

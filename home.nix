@@ -59,7 +59,8 @@
     pkgs.clang
     pkgs.go
     (pkgs.rust-bin.stable."1.91.1".default.override {
-      extensions = ["rust-analyzer"];
+      extensions = [ "rust-analyzer" "rust-src" ];
+      targets = [ "wasm32-unknown-unknown" ];
     })
   ];
 
@@ -109,6 +110,9 @@
   };
 
   home.sessionPath = [
+    "$HOME/.opencode/bin"
+    "$HOME/.cargo/bin"
+    "$HOME/.local/bin"
     "$HOME/go/bin"
     "$ANDROID_HOME/emulator"
     "$ANDROID_HOME/platform-tools"
