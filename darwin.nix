@@ -24,6 +24,10 @@
       # Needed for compiling some rust programs
       "openssl"
       "pkg-config"
+      
+      # Needed for Vulkan
+      "glm"
+      "glfw"
     ];
     casks = [
       "ghostty"

@@ -62,6 +62,8 @@
       extensions = [ "rust-analyzer" "rust-src" ];
       targets = [ "wasm32-unknown-unknown" ];
     })
+    pkgs.platformio-core
+    pkgs.act
   ];
 
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
@@ -121,6 +123,8 @@
   sops = {
     age.keyFile = "${config.home.homeDirectory}/.config/sops/age/keys.txt";
     defaultSopsFile = ./secrets/ssh.yaml;
+    defaultSymlinkPath = "${config.home.homeDirectory}/.config/sops-nix/secrets";
+    defaultSecretsMountPoint = "${config.home.homeDirectory}/.config/sops-nix/secrets.d";
     secrets = {
       gh_perso_key = {
         path = "${config.home.homeDirectory}/.ssh/id_ed25519";
