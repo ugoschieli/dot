@@ -20,8 +20,7 @@
     "flake-parts": {
       "inputs": {
         "nixpkgs-lib": [
-          "myneovim",
-          "neovim",
+          "neovim-nightly",
           "nixpkgs"
         ]
       },
@@ -63,11 +62,11 @@
     "homebrew-cask": {
       "flake": false,
       "locked": {
-        "lastModified": 1775110968,
-        "narHash": "sha256-6R9UVSF6IDEvW6YsV6magC78lZbMhjlUKbtjy6nz31w=",
+        "lastModified": 1775119022,
+        "narHash": "sha256-e8+7sj64AE+ez+GhQ1zsAgI21gadQjRwhZdpyjpY9CQ=",
         "owner": "homebrew",
         "repo": "homebrew-cask",
-        "rev": "ceb0ed21c20c0540059739b50a7c3d3a4dc80ad3",
+        "rev": "4e032d46484debabab3ab9e3dce6a0cf18f30745",
         "type": "github"
       },
       "original": {
@@ -110,7 +109,9 @@
     },
     "myneovim": {
       "inputs": {
-        "neovim": "neovim",
+        "neovim": [
+          "neovim-nightly"
+        ],
         "nixpkgs": [
           "nixpkgs"
         ]
@@ -125,12 +126,11 @@
       },
       "parent": []
     },
-    "neovim": {
+    "neovim-nightly": {
       "inputs": {
         "flake-parts": "flake-parts",
         "neovim-src": "neovim-src",
         "nixpkgs": [
-          "myneovim",
           "nixpkgs"
         ]
       },
@@ -226,6 +226,7 @@
         "homebrew-core": "homebrew-core",
         "homebrew-felixkratz": "homebrew-felixkratz",
         "myneovim": "myneovim",
+        "neovim-nightly": "neovim-nightly",
         "nix-darwin": "nix-darwin",
         "nix-homebrew": "nix-homebrew",
         "nixpkgs": "nixpkgs",

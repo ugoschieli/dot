@@ -33,6 +33,11 @@
     myneovim = {
       url= ./neovim;
       inputs.nixpkgs.follows = "nixpkgs";
+      inputs.neovim.follows = "neovim-nightly";
+    };
+    neovim-nightly = { 
+      url = "github:nix-community/neovim-nightly-overlay";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
 
     rust-overlay = {
@@ -46,7 +51,7 @@
     };
   };
 
-  outputs = inputs@{ self, nix-darwin, home-manager, nixpkgs, nix-homebrew, homebrew-core, homebrew-cask, homebrew-felixkratz, myneovim, rust-overlay, sops-nix }:
+  outputs = inputs@{ self, nix-darwin, home-manager, nixpkgs, nix-homebrew, homebrew-core, homebrew-cask, homebrew-felixkratz, myneovim, neovim-nightly, rust-overlay, sops-nix }:
   let
     primaryUser = "ugo";
   in
