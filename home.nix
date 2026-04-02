@@ -58,7 +58,7 @@
     pkgs.nodejs
     pkgs.clang
     pkgs.go
-    (pkgs.rust-bin.stable."1.91.1".default.override {
+    (pkgs.rust-bin.stable."1.93.1".default.override {
       extensions = [ "rust-analyzer" "rust-src" ];
       targets = [ "wasm32-unknown-unknown" ];
     })
