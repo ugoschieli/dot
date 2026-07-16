@@ -58,12 +58,14 @@
     pkgs.nodejs
     pkgs.clang
     pkgs.go
-    (pkgs.rust-bin.stable."1.93.1".default.override {
+    (pkgs.rust-bin.stable.latest.default.override {
       extensions = [ "rust-analyzer" "rust-src" ];
       targets = [ "wasm32-unknown-unknown" ];
     })
     pkgs.platformio-core
     pkgs.act
+    pkgs.poppler-utils
+    pkgs.trunk
   ];
 
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
@@ -108,6 +110,7 @@
     DIFFPROG = "nvim -d";
     MANPAGER = "nvim +Man!";
     MANWIDTH = "999";
+    NPM_CONFIG_PREFIX = "$HOME/.npm-global";
     ANDROID_HOME = "$HOME/Library/Android/sdk";
   };
 
@@ -115,6 +118,7 @@
     "$HOME/.opencode/bin"
     "$HOME/.cargo/bin"
     "$HOME/.local/bin"
+    "$HOME/.npm-global/bin"
     "$HOME/go/bin"
     "$ANDROID_HOME/emulator"
     "$ANDROID_HOME/platform-tools"

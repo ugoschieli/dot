@@ -9,7 +9,6 @@
     taps = {
       "homebrew/homebrew-core" = inputs.homebrew-core;
       "homebrew/homebrew-cask" = inputs.homebrew-cask;
-      "FelixKratz/homebrew-formulae" = inputs.homebrew-felixkratz;
     };
     user = primaryUser;
     mutableTaps = false;
@@ -19,8 +18,6 @@
     enable = true;
     taps = builtins.attrNames config.nix-homebrew.taps;
     brews = [
-      "sketchybar"
-
       # Needed for compiling some rust programs
       "openssl"
       "pkg-config"
